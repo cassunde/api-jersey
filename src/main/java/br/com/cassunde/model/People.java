@@ -13,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
 @Entity
@@ -28,6 +30,8 @@ public class People implements CacheID {
     
     private String cpf;
     
+    @Temporal(TemporalType.DATE)
+    @Column(columnDefinition="date")
     private Date dateBirth;
     
     private String email;

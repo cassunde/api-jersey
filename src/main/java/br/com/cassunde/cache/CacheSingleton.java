@@ -14,7 +14,7 @@ public enum CacheSingleton {
     EmbeddedCacheManager getCacheManager() {
         if (cacheManager == null) {
             ConfigurationBuilder config = new ConfigurationBuilder();
-            config.expiration().lifespan(30, MINUTES);
+            config.expiration().lifespan(1, MINUTES);
             cacheManager = new DefaultCacheManager(config.build());
         }
         return cacheManager;

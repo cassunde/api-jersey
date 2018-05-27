@@ -17,6 +17,7 @@ import javax.ws.rs.core.Response;
 import br.com.cassunde.api.PeopleDAO;
 import br.com.cassunde.cache.CacheHandler;
 import br.com.cassunde.model.People;
+import br.com.cassunde.model.Phone;
 
 
 @Path("peoples")
@@ -43,7 +44,7 @@ public class PeopleResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listPeoples() {
+    public Response listPeoples() {    	
         return Response.ok(peopleDAO.list()).build();
     }
    
@@ -55,6 +56,19 @@ public class PeopleResource {
     	people = peopleDAO.update(people);
     	return Response.ok(people).build();
     }
+    
+    @POST
+    @Path("/{id}/phones")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response createPeoplePhone(@PathParam("id") final int id, Phone phone) throws URISyntaxException {
+    	People people = peopleDAO.get(id);
+    	phone.setPeople(people);
+    	people.addPhones(phone);
+    	
+    	peopleDAO.update(people);
+    	return Response.ok(phone).build();
+    }
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
@@ -65,6 +79,7 @@ public class PeopleResource {
     
     @DELETE
     @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response deletePeople(@PathParam("id") final int idPeople) {
     	peopleDAO.delete(idPeople);
     	return Response.ok("ok").build();

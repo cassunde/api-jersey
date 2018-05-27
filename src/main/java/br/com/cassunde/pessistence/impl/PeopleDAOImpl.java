@@ -37,7 +37,9 @@ public class PeopleDAOImpl implements PeopleDAO {
 
     @Override
     public List<People> list() {
-        return (List<People>) basicDAO.list(People.class);
+    	@SuppressWarnings("unchecked")
+		List<People> re = (List<People>) transactional(em -> em.createQuery("from People",People.class).getResultList(),"error");
+    	return re;
     }
 
     @Override
