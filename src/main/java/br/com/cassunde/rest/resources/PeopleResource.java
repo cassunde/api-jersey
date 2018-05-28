@@ -69,6 +69,18 @@ public class PeopleResource {
     	peopleDAO.update(people);
     	return Response.ok(phone).build();
     }
+    
+    @DELETE
+    @Path("/{id}/phones/{idPhone}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deletePeoplePhone(@PathParam("id") final int id, @PathParam("idPhone") final int idPhone ) {
+    	People people = peopleDAO.get(id);
+    	people.removePhonesById(idPhone);
+    	    	
+    	people = peopleDAO.update(people);
+    	
+    	return Response.ok(people).build();
+    }
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
@@ -84,22 +96,5 @@ public class PeopleResource {
     	peopleDAO.delete(idPeople);
     	return Response.ok("ok").build();
     }
-    
-    /*@PUT
-    @Path("{id}/phone/{idPhone}")
-    public Response addMember(@PathParam("id") int id, @PathParam("employeeId") int employeeId) {
-        final People people = peopleDAO.get(id);
-        final Phone employee = employeeDAO.get(employeeId);
-        teamDAO.addMember(team, employee);
-        return Response.noContent().build();
-    }
-
-    @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateTeam(People existingTeam) {
-        teamDAO.update(existingTeam);
-        return Response.noContent().build();
-    }
-
-    */
+       
 }

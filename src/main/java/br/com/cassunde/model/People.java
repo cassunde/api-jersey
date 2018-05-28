@@ -89,8 +89,18 @@ public class People implements CacheID {
 		this.phones.add(phone);
 	}
 	
-	public void reomvePhones(Phone phone) {
+	public void removePhones(Phone phone) {
+		phone.setPeople(null);
 		this.phones.remove(phone);
+	}
+	
+	public void removePhonesById(Integer idPhone) {
+		
+		Phone phoneFinded = phones.stream().filter(p -> p.getId() == idPhone).findFirst().orElse(null);
+		if( phoneFinded != null ) {
+			phoneFinded.setPeople(null);
+			this.phones.remove(phoneFinded);	
+		}
 	}
 
 	public String toString() {
