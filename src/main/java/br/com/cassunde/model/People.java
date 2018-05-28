@@ -1,5 +1,7 @@
 package br.com.cassunde.model;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,6 +19,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
+import br.com.cassunde.util.Util;
+
 @Entity
 @Table(name = "people", uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})})
 public class People implements CacheID {
@@ -29,6 +33,8 @@ public class People implements CacheID {
     private String name;
     
     private String cpf;
+    
+    private Integer age;
     
     @Temporal(TemporalType.DATE)
     @Column(columnDefinition="date")
@@ -69,7 +75,7 @@ public class People implements CacheID {
 	}
 
 	public void setDateBirth(Date dateBirth) {
-		this.dateBirth = dateBirth;
+		this.dateBirth = dateBirth;					
 	}
 
 	public String getEmail() {
@@ -78,6 +84,13 @@ public class People implements CacheID {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public Integer getAge() {
+		LocalDate dateBirthConveted = Util.toLocalDate(dateBirth);
+		LocalDate now = LocalDate.now();
+		Period period = Period.between(dateBirthConveted, now);
+		return period.getYears();
 	}
 
 	public List<Phone> getPhones() {
