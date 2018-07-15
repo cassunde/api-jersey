@@ -18,6 +18,7 @@ import br.com.cassunde.api.PeopleDAO;
 import br.com.cassunde.cache.CacheHandler;
 import br.com.cassunde.model.People;
 import br.com.cassunde.model.Phone;
+import br.com.cassunde.rest.websocket.ClientNotificationBasic;
 
 
 @Path("peoples")
@@ -44,7 +45,7 @@ public class PeopleResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listPeoples() {    	
+    public Response listPeoples() {
         return Response.ok(peopleDAO.list()).build();
     }
    
@@ -96,5 +97,14 @@ public class PeopleResource {
     	peopleDAO.delete(idPeople);
     	return Response.ok("ok").build();
     }
+    
+    @GET
+    @Path("/websocket/{message}")    
+    public Response getPeopleById(@PathParam("message") final String message) {
+        
+    	new ClientNotificationBasic("localhost:8080/api-jersey/chat", message).call();
+    	
+        return Response.ok("ok").build();
+    }    
        
 }
