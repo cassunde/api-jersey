@@ -12,3 +12,6 @@ SIMPLE API TO MANAGE PEOPLE
 - CDI
 - JPA/HIBERNATE
 - CACHE IMPLEMENTATION
+
+read more in wiki [DOCUMENTATION](https://github.com/cassunde/api-jersey/wiki)
+--
