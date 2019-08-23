@@ -10,7 +10,7 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
-@ServerEndpoint(value="/chat", configurator=ChatServerEndPointConfigurator.class)
+@ServerEndpoint(value="/chat/{client}/{panel}", configurator=ChatServerEndPointConfigurator.class)
 public class Chat {
 
     private Set<Session> userSessions = Collections.synchronizedSet(new HashSet<Session>());
@@ -33,5 +33,4 @@ public class Chat {
             session.getAsyncRemote().sendText(message);
         }
     }
-
 }

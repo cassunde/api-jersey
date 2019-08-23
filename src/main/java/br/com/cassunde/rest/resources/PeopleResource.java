@@ -100,11 +100,10 @@ public class PeopleResource {
     
     @GET
     @Path("/websocket/{message}")    
-    public Response getPeopleById(@PathParam("message") final String message) {
+    public Response sendMenssage(@PathParam("message") final String message) {
         
-    	new ClientNotificationBasic("localhost:8080/api-jersey/chat", message).call();
+    	new ClientNotificationBasic("localhost:8080/api-jersey/chat/1/1", message).call();
     	
         return Response.ok("ok").build();
-    }    
-       
+    }
 }

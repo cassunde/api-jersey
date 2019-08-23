@@ -34,8 +34,6 @@ public class People implements CacheID {
     
     private String cpf;
     
-    private Integer age;
-    
     @Temporal(TemporalType.DATE)
     @Column(columnDefinition="date")
     private Date dateBirth;
@@ -49,7 +47,7 @@ public class People implements CacheID {
     public Integer getId() {
 		return id;
 	}
-
+    
 	public void setId(int id) {
 		this.id = id;
 	}

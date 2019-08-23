@@ -5,18 +5,14 @@
     <persistence-unit name="conexao" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>        
         <properties>
-            <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect"/>
-            <property name="hibernate.current_session_context_class" value="thread"/>
-            <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/dbpessoa"/>
-            <property name="hibernate.connection.username" value="postgres	"/>
-            <property name="hibernate.connection.password" value="Inline@2016"/>
-            <property name="hibernate.connection.pool_size" value="1"/>
-            <property name="hibernate.cache.provider_class" value="org.hibernate.cache.internal.NoCacheProvider"/>
-            <property name="hibernate.show_sql" value="true"/>
-            <property name="hibernate.hbm2ddl.auto" value="update"/>
-            <property name="hibernate.hibernate.c3p0.timeout" value="7200"/>
-            <property name="hibernate.hibernate.c3p0.max_statements" value="10"/>
+ 			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+	      	<property name="javax.persistence.jdbc.url"    value="jdbc:h2:mem:test" />
+	      	<property name="javax.persistence.jdbc.user" value="sa" />
+		    <property name="javax.persistence.jdbc.password" value="" />
+		    <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+		    <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+		    <property name="show_sql" value="true"/>
+		    <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
         </properties>
     </persistence-unit>
 </persistence>

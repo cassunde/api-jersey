@@ -25,7 +25,7 @@
         <version.arquillian-tomcat-embedded-8>1.0.0.CR7</version.arquillian-tomcat-embedded-8>
         <version.arquillian-junit-container>1.1.11.Final</version.arquillian-junit-container>
         <version.infinispan>8.2.4.Final</version.infinispan>
-        <version.hibernate>4.3.5.Final</version.hibernate>
+        <version.hibernate>5.2.6.Final</version.hibernate>
         <tomcat.version>8.5.23</tomcat.version>
     </properties>
 
@@ -83,6 +83,13 @@
         </dependency>
 
         <!-- PERSISTENCE -->
+        
+        <dependency>
+			<groupId>javax.persistence</groupId>
+		    <artifactId>javax.persistence-api</artifactId>
+		    <version>2.2</version>
+		</dependency>
+        
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
@@ -102,18 +109,6 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>1.4.192</version>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.0.5</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>9.1-901-1.jdbc4</version>
-            <scope>runtime</scope>
         </dependency>
 
         <!-- CACHING -->
