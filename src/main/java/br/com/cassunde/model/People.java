@@ -7,35 +7,26 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
 
 import br.com.cassunde.util.Util;
 
 @Entity
-@Table(name = "people", uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})})
 public class People implements CacheID {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(columnDefinition="serial")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     private String name;
     
     private String cpf;
     
-    @Temporal(TemporalType.DATE)
-    @Column(columnDefinition="date")
     private Date dateBirth;
     
     private String email;

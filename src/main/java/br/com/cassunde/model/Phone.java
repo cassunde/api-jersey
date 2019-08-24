@@ -1,25 +1,19 @@
 package br.com.cassunde.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "phone", uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})})
 public class Phone implements CacheID {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", columnDefinition="serial")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     
     private String ddd;
@@ -28,7 +22,7 @@ public class Phone implements CacheID {
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "id_people", foreignKey=@ForeignKey(name = "fk_phone_people"))    
+    @JoinColumn(name = "id_people")    
     private People people;
 
     @Override
