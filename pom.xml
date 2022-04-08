@@ -25,7 +25,7 @@
         <version.arquillian-tomcat-embedded-8>1.0.0.CR7</version.arquillian-tomcat-embedded-8>
         <version.arquillian-junit-container>1.1.11.Final</version.arquillian-junit-container>
         <version.infinispan>8.2.4.Final</version.infinispan>
-        <version.hibernate>5.3.11.Final</version.hibernate>
+        <version.hibernate>5.4.24.Final</version.hibernate>
         <tomcat.version>8.5.23</tomcat.version>
     </properties>
 
